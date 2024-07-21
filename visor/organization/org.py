@@ -13,9 +13,9 @@ def create_org(org_name:str):
 
     created_at = datetime.now()
     invite_code = uuid.uuid4()  # make it 6 digit random number
-    run_query((db_query.CREATE_ORG_QUERY, (org_name, created_at, str(invite_code), created_at)))
+    run_query(db_query.CREATE_ORG_QUERY, (org_name, created_at, str(invite_code), created_at))
     # TODO: get org id
-    return Organization(org_name, created_at=created_at, invite_code=invite_code)
+    return Organization(org_name=org_name, created_at=created_at, invite_code=invite_code)
 
 def select_org(ord_id:str):
     org = fetch_one(db_query.SELECT_ORG_QUERY, (ord_id, ))

@@ -4,7 +4,7 @@ from flask import Blueprint, request, jsonify
 from visor.utils import init_logger
 from visor.types import Deployment, DeploymentStatus, Cluster
 from visor.resource_manager.deployment import create_deployment, select_deployment, select_all_deployment
-from visor.resource_manager.cluster import create_cluster, select_cluster, select_all_cluster
+from visor.resource_manager.cluster import create_cluster, select_cluster, select_all_cluster, clear_cluster_schedule_queue
 
 
 logger=init_logger(__name__)
@@ -132,3 +132,18 @@ def select_deployments(org_id, cluster_id, deployment_id):
             }
         )
 
+
+@res_man_app.delete("/queue/<org_id>/<cluster_id>")
+def clear_queue(org_id, cluster_id):
+    try:
+        clear_cluster_schedule_queue(org_id, cluster_id)
+        return jsonify({
+            "message": "queue cleared"
+        })
+    except Exception as err:
+        logger.exception("error occured while clearing queue")
+        return jsonify(
+            {
+                "message": "Failed to clear queue. Please try again"
+            }
+        )
