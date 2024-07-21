@@ -30,3 +30,17 @@ Note: This is still WORK IN PROGRESS
     - If the priority is greater than 1, it is decreased.   
     - If the priority is 1 or lower, the wait time is increased, and if it exceeds the threshold, the priority is increased.
     - The deployment is re-added to the appropriate queue based on the adjusted priority. 
+
+
+## Dependency
+Redis - uses redis for queueing deployment for each org and cluster combination
+PostgresSql - uses postgress to persist org, rbac, cluster and deployment related info
+
+
+## Setup 
+TODO: Add detailed setup steps
+1. create venv
+2. install poetry
+3. run poetry install
+4. start psql and redis docker containers
+5. create db and table based on `scripts/db.sql`
