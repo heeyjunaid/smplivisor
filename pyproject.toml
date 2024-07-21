@@ -1,0 +1,19 @@
+[tool.poetry]
+name = "smplivisior"
+version = "0.1.0"
+description = "mlops manage platform"
+authors = ["junaid <junaid.shaikh@juspay.in>"]
+readme = "README.md"
+
+[tool.poetry.dependencies]
+python = "^3.10"
+flask = "^3.0.3"
+jwt = "^1.3.1"
+psycopg2-binary = "^2.9.9"
+pydantic = "^2.8.2"
+redis = "^5.0.7"
+
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
